@@ -11,49 +11,49 @@ with Ada.Text_IO, Ada.Integer_Text_IO, Ada.Float_Text_IO;
 
 procedure CALC1 is
 
-mem : array(1 .. 300) of String(1 .. 100); --array used for the name of the variable
-load : array (1 .. 300) of float;
+--mem : array(1 .. 300) of String(1 .. 100); --array used for the name of the variable
+--load : array (1 .. 300) of float;
 
 -- Create add function
-function add (num1: Float, num2: Float) return Float is
+function add (num1, num2 : Float) return Float is
 begin
    return num1 + num2;
 end add;
 
 --Create subtract function
-function subtract (num1: Float, num2: Float) return Float is
+function subtract (num1, num2 : Float) return Float is
 begin
 	return num1 - num2;
 end subtract;
 
 --create multiply function
-function multiply (num1: Float, num2: Float) return Float is
+function multiply (num1, num2 : Float) return Float is
 begin
 	return num1 * num2;
 end multiply;
 
 --create divide function
-function divide (num1: Float, num2: Float) return Float is
+function divide (num1, num2 : Float) return Float is
 begin
 	return num1 / num2;
 end divide;
 
 --create exp function
-function exp (num1: Float, exponent: Integer)
+function exp (num1: Float; exponent: Integer) return Float is
 
 number : Float := num1;
 
-for index in 1 .. exponent - 1 loop
-	number := number * number;
+begin
+
+for index in 1 .. (exponent - 1) loop
+	number := number * num1;
 end loop;
+
+return number;
 
 end exp;
 
--- Create squareroot function
-function sqrt () is
-   mem val = load^-2;
-end sqrt;
-
+--begin main procedure
 begin
    -- Request user input
    --Ada.Text_IO.Put_Line("READY FOR INPUT");
@@ -66,8 +66,18 @@ begin
    --Ada.Text_IO.Get (mem);
    --Ada.Text_IO.Put_Line("VALUE OF" mem "IS" c);
    
-   Ada.Float_Text_IO.Put_Line(add(2, 4)); -- should return 6
-   Ada.Float_Text_IO.Put_Line(subtract(4, 2)); -- should return 2
-   Ada.Float_Text_IO.Put_Line(multiply(10, 2)); -- should return 20
-   Ada.Float_Text_IO.Put_Line(divide(100, 2)); -- should return 50
+   Ada.Text_IO.Put("2 + 4 = ");
+   Ada.Float_Text_IO.Put(add(2.0, 4.0)); -- should return 6
+   Ada.Text_IO.Put_Line("");
+   Ada.Text_IO.Put("4 - 2 = ");
+   Ada.Float_Text_IO.Put(subtract(4.0, 2.0)); -- should return 2
+   Ada.Text_IO.Put_Line("");
+   Ada.Text_IO.Put("10 * 2 = ");
+   Ada.Float_Text_IO.Put(multiply(10.0, 2.0)); -- should return 20
+   Ada.Text_IO.Put_Line("");
+   Ada.Text_IO.Put("100 / 2 = ");
+   Ada.Float_Text_IO.Put(divide(100.0, 2.0)); -- should return 50
+   Ada.Text_IO.Put_Line("");
+   Ada.Text_IO.Put("2 ^ 15 = ");
+   Ada.Float_Text_IO.Put(exp(2.0, 15)); -- should return 4
 end CALC1;
