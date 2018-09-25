@@ -14,47 +14,60 @@ procedure CALC1 is
 mem : array(1 .. 300) of String(1 .. 100); --array used for the name of the variable
 load : array (1 .. 300) of float;
 
--- Create object, load, which will accept variable name and value
-procedure load is
-   var name : Text;
-   var val : Integer;
-end load;
-
--- Create mem that will be named and take directions based on variable names
-procedure mem is
-   var name : Text;
-   var val : load;
-end mem;
-
 -- Create add function
-function add (floa, flo) is
-   mem val = load + load;
-end +;
+function add (num1: Float, num2: Float) return Float is
+begin
+   return num1 + num2;
+end add;
+
+--Create subtract function
+function subtract (num1: Float, num2: Float) return Float is
+begin
+	return num1 - num2;
+end subtract;
+
+--create multiply function
+function multiply (num1: Float, num2: Float) return Float is
+begin
+	return num1 * num2;
+end multiply;
+
+--create divide function
+function divide (num1: Float, num2: Float) return Float is
+begin
+	return num1 / num2;
+end divide;
+
+--create exp function
+function exp (num1: Float, exponent: Integer)
+
+number : Float := num1;
+
+for index in 1 .. exponent - 1 loop
+	number := number * number;
+end loop;
+
+end exp;
 
 -- Create squareroot function
-procedure sqrt is
+function sqrt () is
    mem val = load^-2;
 end sqrt;
 
--- Create power of function
-procedure ^ is
-   mem val = load^load
-end ^;
-
--- reate print function
-procedure print is
-   Put_Line();
-end print;
-
 begin
    -- Request user input
-   Ada.Text_IO.Put_Line("READY FOR INPUT");
+   --Ada.Text_IO.Put_Line("READY FOR INPUT");
    -- Get variable name for load
-   Ada.Text_IO.Get (load);
+   --Ada.Text_IO.Get (load);
    -- Request user input value for load
-   Ada.Integer_Text_IO.Put_Line("ENTER VALUE FOR" load);
+   --Ada.Integer_Text_IO.Put_Line("ENTER VALUE FOR" load);
    -- Get value for load
-   Ada.Text_IO.Get (load);
-   Ada.Text_IO.Get (mem);
-   Ada.Text_IO.Put_Line("VALUE OF" mem "IS" c);
+   --Ada.Text_IO.Get (load);
+   --Ada.Text_IO.Get (mem);
+   --Ada.Text_IO.Put_Line("VALUE OF" mem "IS" c);
+   
+   Ada.Float_Text_IO.Put_Line(add(2, 4)); -- should return 6
+   Ada.Float_Text_IO.Put_Line(subtract(4, 2)); -- should return 2
+   Ada.Float_Text_IO.Put_Line(multiply(10, 2)); -- should return 20
+   Ada.Float_Text_IO.Put_Line(divide(100, 2)); -- should return 50
 end CALC1;
